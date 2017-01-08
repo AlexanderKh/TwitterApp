@@ -10,11 +10,8 @@ development:
   password: 1234
 
 test:
-  <<: *default
-  host: localhost
-  database: twitter_test
-  username: postgres
-  password: 1234
+  adapter: sqlite3
+  database: ":memory:"
 
 production:
   <<: *default
