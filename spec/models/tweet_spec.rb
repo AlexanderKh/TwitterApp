@@ -6,7 +6,7 @@ RSpec.describe Tweet do
 
   describe 'validations' do
     it { is_expected.to validate_presence_of(:user) }
-    it { is_expected.to validate_length_of(:content, maximum: 100) }
+    it { is_expected.to validate_length_of(:content).is_at_most(100) }
   end
 
 end
