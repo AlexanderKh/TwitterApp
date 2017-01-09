@@ -12,4 +12,15 @@
 //
 //= require jquery
 //= require jquery_ujs
+//
+//= require foundation
+//
+//= require angular
+//= require angular-route
+//= require angular-resource
+//= require angular-mocks
+//
+//= require angular-rails-templates
+//= require_tree ./templates
+//
 //= require_tree .

@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+source 'https://rails-assets.org'
 
 ruby '2.3.3'
 
@@ -22,11 +23,20 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.5'
 gem 'slim'
 gem 'slim-rails'
-gem 'foundation-rails'
+gem 'angular-rails-templates'
+
+# Rails Assets
+gem 'rails-assets-angular'
+gem 'rails-assets-angular-route'
+gem 'rails-assets-angular-resource'
+gem 'rails-assets-angular-mocks'
+gem 'rails-assets-foundation'
+gem 'rails-assets-bootstrap'
 
 # Authentication
 gem 'devise'
 gem 'omniauth'
+gem 'omniauth-facebook'
 
 group :development, :test do
   gem 'pry'
@@ -36,6 +46,8 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'faker'
+
+  gem 'teaspoon-jasmine'
 end
 
 group :development do
