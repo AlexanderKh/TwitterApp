@@ -1,25 +1,30 @@
 twitter = angular.module('twitter', [
   'templates',
-  'ngRoute',
+  'ui.router',
   'ngResource'
 ])
 
-twitter.config([ '$routeProvider',
-  ($routeProvider)->
-    $routeProvider
-    .when('/',
-      templateUrl: 'index.html'
+twitter.config([ '$stateProvider', '$urlRouterProvider'
+  ($stateProvider, $urlRouterProvider)->
+    $urlRouterProvider.otherwise('/home');
+    $stateProvider
+    .state('app',
+      templateUrl: 'layout.html'
     )
-    .when('/tweets',
-      templateUrl: 'tweets/index.html'
-      controller: 'TweetsController'
-    )
+      .state('app.home',
+        url: '/home',
+        templateUrl: 'index.html'
+      )
+      .state('app.tweets',
+        url: '/tweets'
+        templateUrl: 'tweets/index.html'
+        controller: 'TweetsController'
+      )
+      .state('app.signin',
+        url: '/signin'
+        templateUrl: 'authentication/signin.html'
+        controller: 'AuthenticationController'
+      )
 ])
 
-angular.module('twitter')
-.controller("TweetsController", [ '$scope', '$routeParams', 'Tweet',
-  ($scope, $routeParams, Tweet)->
 
-    $scope.tweets = Tweet.query()
-
-])

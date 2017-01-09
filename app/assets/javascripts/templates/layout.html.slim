@@ -1,0 +1,14 @@
+nav.navbar.navbar-inverse role="navigation"
+  .navbar-header
+    a.navbar-brand ui-sref="#" Twitter
+  ul.nav.navbar-nav
+    li
+      a ui-sref=".home" Home
+    li
+      a ui-sref=".tweets" Tweets
+    li ng-show="!user.id"
+      a ui-sref="app.signin" Sign in
+    li ng-show="user.id"
+      a ng-click="signout()" Sign out
+.container
+  div ui-view=""

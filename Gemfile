@@ -28,6 +28,7 @@ gem 'angular-rails-templates'
 # Rails Assets
 gem 'rails-assets-angular'
 gem 'rails-assets-angular-route'
+gem 'rails-assets-angular-ui-router'
 gem 'rails-assets-angular-resource'
 gem 'rails-assets-angular-mocks'
 gem 'rails-assets-foundation'
@@ -46,7 +47,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'faker'
-
   gem 'teaspoon-jasmine'
 end
 

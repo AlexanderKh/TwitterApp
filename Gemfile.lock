@@ -152,6 +152,8 @@ GEM
       rails-assets-angular (= 1.6.1)
     rails-assets-angular-route (1.6.1)
       rails-assets-angular (= 1.6.1)
+    rails-assets-angular-ui-router (0.3.2)
+      rails-assets-angular (>= 1.0.8, < 2)
     rails-assets-bootstrap (3.3.7)
       rails-assets-jquery (>= 1.9.1, < 4)
     rails-assets-fastclick (1.0.6)
@@ -281,6 +283,7 @@ DEPENDENCIES
   rails-assets-angular-mocks
   rails-assets-angular-resource
   rails-assets-angular-route
+  rails-assets-angular-ui-router
   rails-assets-bootstrap
   rails-assets-foundation
   rspec

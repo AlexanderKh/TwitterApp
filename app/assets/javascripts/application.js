@@ -13,10 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //
-//= require foundation
+//= require bootstrap
 //
 //= require angular
-//= require angular-route
+//= require angular-ui-router
 //= require angular-resource
 //= require angular-mocks
 //
