@@ -12,6 +12,7 @@ development:
 test:
   adapter: sqlite3
   database: ":memory:"
+  verbosity: quiet
 
 production:
   <<: *default

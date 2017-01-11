@@ -1,0 +1,16 @@
+h2 Register
+
+form ng-submit="register(registrationForm)" role="form" ng-init="registrationForm = {}"
+  .field
+    label for="username" Username
+    input#username type="text" name="username" autofocus="true" ng-model="registrationForm.username"
+  .field
+    label for="password" Password
+    input#password type="password" name="password" autocomplete="off" ng-model="registrationForm.password"
+  .field
+    label for="password_confirmation" Password Confirmation
+    input#password_confirmation type="password" name="password_confirmation" autocomplete="off" ng-model="registrationForm.password_confirmation"
+  .actions
+    input type="submit"
+
+button ng-click="authenticate('facebook')" Sign in with facebook

@@ -7,8 +7,8 @@ form ng-submit="login(loginForm)" role="form" ng-init="loginForm = {}"
   .field
     label for="password" Password
     input#password type="password" name="password" autocomplete="off" ng-model="loginForm.password"
-  .field
-    input#remember-me type="checkbox" name="remember-me" ng-model="loginForm.remember_me"
-    label for="remember-me" Remember me
   .actions
     input type="submit"
+
+
+button ng-click="authenticate('facebook')" Sign in with facebook

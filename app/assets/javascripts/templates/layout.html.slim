@@ -1,14 +1,20 @@
-nav.navbar.navbar-inverse role="navigation"
+nav.navbar.navbar-default role="navigation"
   .navbar-header
-    a.navbar-brand ui-sref="#" Twitter
+    a.navbar-brand ui-sref="/" Twitter
   ul.nav.navbar-nav
     li
       a ui-sref=".home" Home
     li
       a ui-sref=".tweets" Tweets
-    li ng-show="!user.id"
-      a ui-sref="app.signin" Sign in
-    li ng-show="user.id"
-      a ng-click="signout()" Sign out
+
+  ul.nav.navbar-nav.pull-right ng-if="!isAuthenticated()"
+    li
+      a ui-sref=".login" Login
+    li
+      a ui-sref=".register" Register
+  ul.nav.navbar-nav.pull-right ng-if="isAuthenticated()"
+    li
+      a ui-sref=".logout" Logout
+
 .container
   div ui-view=""

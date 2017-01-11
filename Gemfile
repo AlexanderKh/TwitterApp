@@ -31,23 +31,20 @@ gem 'rails-assets-angular-route'
 gem 'rails-assets-angular-ui-router'
 gem 'rails-assets-angular-resource'
 gem 'rails-assets-angular-mocks'
+gem 'rails-assets-satellizer'
 gem 'rails-assets-foundation'
 gem 'rails-assets-bootstrap'
 
 # Authentication
-gem 'devise'
+gem 'sorcery'
+gem 'jwt'
 gem 'omniauth'
 gem 'omniauth-facebook'
 
 group :development, :test do
   gem 'pry'
-  gem 'sqlite3'
-  gem 'memory_test_fix'
-  gem 'rspec'
-  gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'faker'
-  gem 'teaspoon-jasmine'
 end
 
 group :development do
@@ -59,7 +56,16 @@ group :development do
 end
 
 group :test do
+  gem 'sqlite3'
+  gem 'memory_test_fix'
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'teaspoon-jasmine'
   gem 'shoulda-matchers'
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'chromedriver-helper'
+  gem 'poltergeist'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
