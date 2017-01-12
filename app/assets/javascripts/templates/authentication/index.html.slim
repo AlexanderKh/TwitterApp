@@ -4,7 +4,7 @@
       h4.modal-title Login to site.com
     .modal-body
       .row
-        .col-xs-6
+        .col-sm-6
           .well
             form.login-form ng-submit="login(loginForm)" role="form" ng-init="loginForm = {}"
               .form-group
@@ -19,7 +19,7 @@
                 #loginErrorMsg.alert.alert-error.hide Wrong username or password
                 button.btn.btn-success.btn-block type="submit"  Login
             button.btn.btn-info.btn-block type="submit" ng-click="authenticate('facebook')" Login with facebook
-        .col-xs-6
+        .col-sm-6
           .well
             form.registration-form ng-submit="register(registrationForm)" role="form" ng-init="registrationForm = {}"
               .form-group

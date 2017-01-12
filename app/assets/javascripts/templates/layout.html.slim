@@ -1,18 +1,15 @@
-nav.navbar.navbar-default role="navigation"
-  .navbar-header
-    a.navbar-brand ui-sref="/" Twitter
-  ul.nav.navbar-nav
-    li
-      a ui-sref=".tweets" Tweets
+nav.navbar.navbar-light.bg-faded role="navigation"
+  /button.navbar-toggler.navbar-toggler-right aria-controls="navbarSupportedContent" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarSupportedContent" data-toggle="collapse" type="button"
+    span.navbar-toggler-icon
+  a.navbar-brand ui-sref="/" Twitter
+  .navbar-nav.mr-auto
+    .nav-item
+      a.nav-link ui-sref=".tweets" Tweets
 
-  ul.nav.navbar-nav.pull-right ng-if="!isAuthenticated()"
-    li
-      a ui-sref=".login" Login
-    li
-      a ui-sref=".register" Register
-  ul.nav.navbar-nav.pull-right ng-if="isAuthenticated()"
-    li
-      a ui-sref=".logout" Logout
+    .nav-item ng-if="!isAuthenticated()"
+      a.nav-link ui-sref=".login" Login
+    .nav-item ng-if="isAuthenticated()"
+      a.nav-link ui-sref=".logout" Logout
 
-.container
+.container-fluid
   div ui-view=""
