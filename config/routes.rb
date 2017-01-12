@@ -7,7 +7,14 @@ Rails.application.routes.draw do
     post :signup, to: 'authentication#register'
   end
 
-  resources :tweets
+  namespace 'api' do
+    resources :tweets do
+      member do
+        patch 'like', to: 'tweets#like'
+        patch 'unlike', to: 'tweets#unlike'
+      end
+    end
+  end
 
   get '*path' => 'home#index'
 end

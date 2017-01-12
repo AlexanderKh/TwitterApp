@@ -37,7 +37,15 @@ angular.module('twitter')
       $scope.tweet = null
       $scope.newTweetForm = { }
 
-    $scope.like = ()->
+    $scope.likeTweet = (tweet)->
+      tweet.$like (response)->
+        tweet.liked = true
+      , (error)->
+        console.log(error.data)
 
-
+    $scope.unlikeTweet = (tweet)->
+      tweet.$unlike (response)->
+        tweet.liked = false
+      , (error)->
+        console.log(error.data)
 ])
