@@ -2,10 +2,12 @@
   .panel-heading
     | Tweets
   .panel-body
-    form.tweets-form ng-submit="createTweet(newTweetForm)" role="form" ng-init="newTweetForm = {}"
+    form.tweets-form ng-init="newTweetForm = {}"
       textarea#content.form-control placeholder=("Enter here for tweet...") rows="3" ng-model="newTweetForm.content"
       br
-      button.btn.btn-primary.btn-sm.pull-right type="submit" Tweet
+      button.btn.btn-primary.btn-sm.pull-right ng-click="createTweet(newTweetForm)" ng-if="!tweet" Tweet
+      button.btn.btn-primary.btn-sm.pull-right ng-click="updateTweet(newTweetForm)" ng-if="tweet" Update
+      button.btn.btn-warning.btn-sm.pull-right ng-click="exitEditMode()" ng-if="tweet" Cancel
     .clearfix
     hr
     ul.media-list.tweets
@@ -18,10 +20,12 @@
           strong.text-success @{{ tweet.user_id }}
           p {{ tweet.content }}
         .pull-right
-          button.btn.btn-default.btn-xs type="button"
+          button.btn.btn-default.btn-xs type="button" ng-click="unlikeTweet(tweet)"
             span.glyphicon.glyphicon-heart aria-hidden="true" Like
-          button.btn.btn-default.btn-xs type="button"
+          button.btn.btn-default.btn-xs type="button" ng-click="likeTweet(tweet)"
+            span.glyphicon.glyphicon-heart aria-hidden="true" Like
+          button.btn.btn-default.btn-xs type="button" ng-click="editTweet(tweet)"
             span.glyphicon.glyphicon-pencil aria-hidden="true" Edit
-          button.btn.btn-default.btn-xs type="button"
+          button.btn.btn-default.btn-xs type="button" ng-click="deleteTweet(tweet)"
             span.glyphicon.glyphicon-remove aria-hidden="true" Remove
     span.text-danger mystery
