@@ -9,7 +9,7 @@ angular.module('twitter')
 
       tweet.$save (response)->
         $scope.tweets.unshift response
-        $scope.newTweetForm = { }
+        $scope.tweetForm = { }
       , (error)->
         console.log(error.data)
 
@@ -30,12 +30,12 @@ angular.module('twitter')
         console.log(error)
 
     $scope.editTweet = (tweet)->
-      $scope.newTweetForm = angular.copy tweet
+      $scope.tweetForm = angular.copy tweet
       $scope.tweet = tweet
 
     $scope.exitEditMode = ()->
       $scope.tweet = null
-      $scope.newTweetForm = { }
+      $scope.tweetForm = { }
 
     $scope.likeTweet = (tweet)->
       tweet.$like (response)->

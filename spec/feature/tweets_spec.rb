@@ -13,7 +13,7 @@ feature 'Tweets' do
       tweets_page.fill_tweet_form(text)
       tweets_page.submit_tweet_form
 
-      tweets_page.list_tweets.should eq [text]
+      expect(tweets_page.list_tweets).to eq [text]
     end
 
     scenario 'error when creating tweet over 100 symbols' do

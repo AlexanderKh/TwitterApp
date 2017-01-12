@@ -8,7 +8,7 @@ class TweetsPage < BasePage
 
   def list_tweets
     result = []
-    sleep 0.25
+    sleep 0.5
     all('.tweets .tweet').each do |tweet|
       result << tweet.find('p').text
     end
@@ -23,7 +23,7 @@ class TweetsPage < BasePage
 
   def submit_tweet_form
     within '.tweets-form' do
-      find('button[type="submit"]').click
+      find('button', text: 'Tweet').click
     end
   end
 end

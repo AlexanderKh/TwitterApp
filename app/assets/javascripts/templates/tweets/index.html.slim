@@ -2,13 +2,13 @@
   .panel-heading
     | Tweets
   .panel-body
-    form.tweets-form ng-init="newTweetForm = {}"
-      textarea#content.form-control placeholder=("Enter here for tweet...") rows="3" ng-model="newTweetForm.content"
+    form.tweets-form ng-init="tweetForm = {}"
+      textarea#content.form-control placeholder=("Enter here for tweet...") rows="3" ng-model="tweetForm.content"
       br
       .btn-group.pull-right
-        button.btn.btn-primary.btn-sm ng-click="createTweet(newTweetForm)" ng-if="!tweet" Tweet
+        button.btn.btn-primary.btn-sm ng-click="createTweet(tweetForm)" ng-if="!tweet" Tweet
         button.btn.btn-warning.btn-sm ng-click="exitEditMode()" ng-if="tweet" Cancel
-        button.btn.btn-primary.btn-sm ng-click="updateTweet(newTweetForm)" ng-if="tweet" Update
+        button.btn.btn-primary.btn-sm ng-click="updateTweet(tweetForm)" ng-if="tweet" Update
     .clearfix
     hr
     ul.media-list.tweets

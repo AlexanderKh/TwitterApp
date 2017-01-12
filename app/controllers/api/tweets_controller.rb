@@ -13,7 +13,7 @@ class Api::TweetsController < APIController
     if tweet.valid?
       render tweet
     else
-      render tweet.errors.full_messages, status: :unprocessable_entity
+      render json: tweet.errors.full_messages, status: :unprocessable_entity
     end
   end
 
@@ -21,7 +21,7 @@ class Api::TweetsController < APIController
     if @tweet.update(tweet_params)
       render @tweet
     else
-      render @tweet.errors.full_messages, status: :unprocessable_entity
+      render json: @tweet.errors.full_messages, status: :unprocessable_entity
     end
   end
 
