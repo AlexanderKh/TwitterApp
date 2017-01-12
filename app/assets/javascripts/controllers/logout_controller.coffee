@@ -5,6 +5,6 @@ angular.module('twitter')
     return unless $auth.isAuthenticated()
     $auth.logout().then ()->
       console.log('You have been logged out')
-      $state.go('app.home');
+      $state.go('app.login');
 
 ])

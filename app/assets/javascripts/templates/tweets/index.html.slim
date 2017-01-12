@@ -1,3 +1,20 @@
-div ng-repeat="tweet in tweets"
-  span
-    | {{ tweet.content }}
+.panel.panel-info
+  .panel-heading
+    | Tweets
+  .panel-body
+    form.tweets-form ng-submit="createTweet(newTweetForm)" role="form" ng-init="newTweetForm = {}"
+      textarea#content.form-control placeholder=("Enter here for tweet...") rows="3" ng-model="newTweetForm.content"
+      br
+      button.btn.btn-primary.btn-sm.pull-right type="submit" Tweet
+    .clearfix
+    hr
+    ul.media-list.tweets
+      li.media.tweet ng-repeat="tweet in tweets"
+        a.pull-left href="#"
+          /img.img-circle alt="" src=("./Bootstrap Twitter Feed_files/1.png") /
+        .media-body
+          span.text-muted.pull-right
+            small.text-muted 30 min ago
+          strong.text-success @ Rexona Kumi
+          p {{ tweet.content }}
+    span.text-danger mystery
