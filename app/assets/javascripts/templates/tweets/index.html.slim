@@ -14,7 +14,14 @@
           /img.img-circle alt="" src=("./Bootstrap Twitter Feed_files/1.png") /
         .media-body
           span.text-muted.pull-right
-            small.text-muted 30 min ago
-          strong.text-success @ Rexona Kumi
+            small.text-muted {{ tweet.created_at | date:"MM/dd/yyyy 'at' h:mma" }}
+          strong.text-success @{{ tweet.user_id }}
           p {{ tweet.content }}
+        .pull-right
+          button.btn.btn-default.btn-xs type="button"
+            span.glyphicon.glyphicon-heart aria-hidden="true" Like
+          button.btn.btn-default.btn-xs type="button"
+            span.glyphicon.glyphicon-pencil aria-hidden="true" Edit
+          button.btn.btn-default.btn-xs type="button"
+            span.glyphicon.glyphicon-remove aria-hidden="true" Remove
     span.text-danger mystery
