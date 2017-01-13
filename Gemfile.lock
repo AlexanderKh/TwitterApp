@@ -159,6 +159,8 @@ GEM
       railties (= 5.0.1)
       sprockets-rails (>= 2.0.0)
     rails-assets-angular (1.6.1)
+    rails-assets-angular-local-storage (0.5.2)
+      rails-assets-angular (>= 1.0, < 2)
     rails-assets-angular-mocks (1.6.1)
       rails-assets-angular (= 1.6.1)
     rails-assets-angular-resource (1.6.1)
@@ -307,6 +309,7 @@ DEPENDENCIES
   puma (~> 3.0)
   rails (~> 5.0.1)
   rails-assets-angular
+  rails-assets-angular-local-storage
   rails-assets-angular-mocks
   rails-assets-angular-resource
   rails-assets-angular-route

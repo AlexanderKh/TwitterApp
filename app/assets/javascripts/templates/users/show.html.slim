@@ -1,0 +1,21 @@
+.row
+  .profile.col-md-offset-2.col-md-8.col-lg-offset-3.col-lg-6
+    .col-sm-12
+      .col-xs-12.col-sm-8
+        h2 {{ user.username }}
+        p
+          strong> ID:
+          span {{ user.id }}
+      .col-xs-12.col-sm-4.text-center
+        img.img-fluid.img-thumbnail alt="" src="http://www.exclutips.com/wp-content/uploads/2015/08/wordpress-custom-user-avatar.png"
+    .col-xs-12.text-center
+      .col-xs-12.col-sm-4.emphasis
+        button.btn.btn-success.btn-block ng-if="!user.following" ng-click="follow()"
+          span.fa.fa-plus-circle Follow
+        button.btn.btn-secondary.btn-block ng-if="user.following" ng-click="unfollow()"
+          span.fa.fa-minus-circle Unfollow
+      .col-xs-12.col-sm-4.emphasis
+        button.btn.btn-primary.btn-block ng-if="!user.favourite" ng-click="favourite()"
+          span.fa.fa-user Favourite
+        button.btn.btn-secondary.btn-block ng-if="user.favourite" ng-click="removeFavourite()"
+          span.fa.fa-user Remove Favourite

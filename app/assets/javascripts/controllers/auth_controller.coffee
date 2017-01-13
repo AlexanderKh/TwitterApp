@@ -1,6 +1,6 @@
 angular.module('twitter')
-.controller("AuthController", [ '$scope', '$auth', '$state'
-  ($scope, $auth, $state)->
+.controller("AuthController", [ '$scope', '$auth', '$state', 'localStorageService'
+  ($scope, $auth, $state, localStorageService)->
 
     $scope.authenticate = (provider)->
       $auth.authenticate(provider)
@@ -8,6 +8,7 @@ angular.module('twitter')
     $scope.login = (loginData)->
       promise = $auth.login(auth: loginData)
       promise.then (response)->
+        localStorageService.set('currentUser', response.data.user)
         $state.go('app.tweets')
 
     $scope.register = (registrationData)->

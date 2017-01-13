@@ -10,9 +10,18 @@ Rails.application.routes.draw do
   namespace 'api' do
     resources :tweets do
       member do
-        patch 'like', to: 'tweets#like'
-        patch 'unlike', to: 'tweets#unlike'
+        post 'like', to: 'tweets#like'
+        post 'unlike', to: 'tweets#unlike'
       end
+    end
+
+    resources :users do
+    member do
+      post 'follow', to: 'users#follow'
+      post 'unfollow', to: 'users#unfollow'
+      post 'favourite', to: 'users#favourite'
+      post 'remove_favourite', to: 'users#remove_favourite'
+    end
     end
   end
 

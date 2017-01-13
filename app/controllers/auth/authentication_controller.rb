@@ -3,7 +3,7 @@ class Auth::AuthenticationController < ApplicationController
   def login
     user = User.find_by(username: params[:username])
     if (user = User.authenticate(login_params[:username], login_params[:password]))
-      render json: { token: user_token(user) }
+      render json: { token: user_token(user), user: user }
     else
       head 401
     end

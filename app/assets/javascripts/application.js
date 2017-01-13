@@ -19,6 +19,7 @@
 //= require angular-ui-router
 //= require angular-resource
 //= require angular-mocks
+//= require angular-local-storage
 //= require satellizer
 //
 //= require angular-rails-templates

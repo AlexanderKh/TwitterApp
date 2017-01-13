@@ -20,7 +20,8 @@
             .media-body
               span.text-muted.pull-right
                 small.text-muted {{ tweet.created_at | date:"MM/dd/yyyy 'at' h:mma" }}
-              strong.text-success @{{ tweet.user_name }}
+              a ui-sref="app.user({id: tweet.user_id})"
+                strong.text-success @{{ tweet.user_name }}
               p {{ tweet.content }}
             .btn-toolbar.justify-content-right
               .btn-group.btn-group-sm

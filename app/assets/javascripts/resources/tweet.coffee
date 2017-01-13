@@ -3,10 +3,10 @@ angular.module('twitter').factory('Tweet', ['$resource',
     $resource('/api/tweets/:id.json', { id: '@id' },
       'update': { method: 'PUT' }
       'like':
-        method: 'PATCH'
+        method: 'POST'
         url: '/api/tweets/:id/like.json'
       'unlike':
-        method: 'PATCH'
+        method: 'POST'
         url: '/api/tweets/:id/unlike.json'
     )
 ])

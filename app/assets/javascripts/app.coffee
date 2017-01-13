@@ -2,6 +2,7 @@ twitter = angular.module('twitter', [
   'templates',
   'ui.router',
   'ngResource',
+  'LocalStorageModule',
   'satellizer'
 ])
 
@@ -38,6 +39,13 @@ twitter.config([ '$stateProvider', '$urlRouterProvider'
       resolve:
         loginRequired: loginRequired
     )
+    .state('app.user',
+      url: '/users/:id'
+      templateUrl: 'users/show.html'
+      controller: 'UsersController'
+      resolve:
+        loginRequired: loginRequired
+    )
     .state('app.login',
       url: '/login'
       templateUrl: 'authentication/index.html'
@@ -61,3 +69,5 @@ twitter.config(['$authProvider'
       clientId: '1112861692158558'
     });
 ])
+
+
