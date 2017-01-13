@@ -36,14 +36,6 @@ class Api::UsersController < APIController
     end
   end
 
-  def favourite
-
-  end
-
-  def remove_favourite
-
-  end
-
   private
 
   def user_params

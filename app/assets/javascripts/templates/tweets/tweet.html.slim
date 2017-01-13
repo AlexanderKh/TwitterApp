@@ -1,0 +1,30 @@
+.list-group-item.tweet
+  .row
+    .col-sm-2.col-xs-4.col-lg-1
+      a href="#"
+        img.rounded-circle.img-fluid alt="" src="{{ tweet.user_avatar_url }}"
+    .col-sm-10.col-xs-8.col-lg-11
+      .row
+        .col-xs-6
+          a ui-sref="app.user({id: tweet.user_id})"
+            span.text-success ng-class="{ 'font-weight-bold': tweet.user_id == currentUser().id }"
+              | @{{ tweet.user_name }}
+        .col-xs-6.text-muted {{ tweet.created_at | date:"MM/dd/yyyy 'at' h:mma" }}
+      .row
+        .col-xs-12
+          p.lead {{ tweet.content }}
+  .row
+    .btn-toolbar
+      .btn-group.btn-group-sm.float-right
+        button.btn.btn-primary type="button" ng-if="!tweet.favourable_id" ng-click="favourite(tweet)"
+          span.glyphicon.glyphicon-heart aria-hidden="true" Favourite
+        button.btn.btn-default type="button" ng-if="tweet.favourable_id" ng-click="removeFavourite(tweet)"
+          span.glyphicon.glyphicon-heart aria-hidden="true" Favourite
+        button.btn.btn-primary type="button" ng-if="tweet.liked" ng-click="unlikeTweet(tweet)"
+          span.glyphicon.glyphicon-heart aria-hidden="true" Like
+        button.btn.btn-default type="button" ng-if="!tweet.liked" ng-click="likeTweet(tweet)"
+          span.glyphicon.glyphicon-heart aria-hidden="true" Like
+        button.btn.btn-warning type="button" ng-click="editTweet(tweet)"
+          span.glyphicon.glyphicon-pencil aria-hidden="true" Edit
+        button.btn.btn-danger type="button" ng-click="deleteTweet(tweet)"
+          span.glyphicon.glyphicon-remove aria-hidden="true" Remove

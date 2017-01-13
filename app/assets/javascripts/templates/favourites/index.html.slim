@@ -1,0 +1,2 @@
+.list-group.tweets
+  div ng-repeat="favourite in favourites" ng-init="tweet = favourite; user = favourite" ng-include="'favourites/partials/' + favourite.type + '.html'"

@@ -1,6 +1,6 @@
 angular.module('twitter')
-.controller("UserController", [ '$scope', '$stateParams', '$http', 'User', 'Upload'
-  ($scope, $stateParams, $http, User, Upload)->
+.controller("UserController", [ '$scope', '$stateParams', 'User', 'Upload', 'Favourite'
+  ($scope, $stateParams, User, Upload, Favourite)->
 
     $scope.user = User.get(id: $stateParams.id)
     $scope.avatar = null
@@ -20,15 +20,19 @@ angular.module('twitter')
         console.log(error)
 
     $scope.favourite = ()->
-      $scope.user.$favourite (response)->
-        $scope.user.favourite = true
+      Favourite.save
+        user_id: $scope.currentUser().id
+        favourable_id: $scope.user.id
+        favourable_type: 'user'
+      , (response)->
+        $scope.user.favourable_id = response.id
         console.log("You added #{$scope.user.username} to favourites")
       , (error)->
         console.log(error)
 
-    $scope.removeFavourite = ()->
-      $scope.user.$removeFavourite (response)->
-        $scope.user.favourite = false
+    $scope.removeFavourite = (user)->
+      Favourite.remove { id: user.favourable_id }, (response)->
+        user.favourable_id = null
         console.log("You removed #{$scope.user.username} from favourites")
       , (error)->
         console.log(error)

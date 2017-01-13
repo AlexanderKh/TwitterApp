@@ -1,29 +1,28 @@
-.row
-  .profile.col-md-offset-2.col-md-8.col-lg-offset-3.col-lg-6
-    .col-sm-12
-      .col-xs-12.col-sm-8
-        h2 {{ user.username }}
-        p
-          strong> ID:
-          span {{ user.id }}
-      .col-xs-12.col-sm-4.text-center
-        img.img-fluid.img-thumbnail alt="" src="{{ user.avatar_medium_url }}"
-        .card
-          p Update Avatar
-          form name="avatarForm"
-            .form-group
-              input.form-control-file accept="image/*" name="file" ng-model="avatar" ngf-max-size="2MB" ngf-model-invalid="errorFile" ngf-select="" required="" type="file"
-              small.form-text.text-danger ng-show="avatarForm.file.$error.maxSize"
-                | File too large {{errorFile.size / 1000000|number:1}}MB: max 2M
-            button.btn.btn-primary ng-click="updateAvatar()" ng-disabled="!avatarForm.$valid" Update Avatar
-    .col-xs-12.text-center
-      .col-xs-12.col-sm-4.emphasis
-        button.btn.btn-success.btn-block ng-if="!user.following" ng-click="follow()"
-          span.fa.fa-plus-circle Follow
-        button.btn.btn-secondary.btn-block ng-if="user.following" ng-click="unfollow()"
-          span.fa.fa-minus-circle Unfollow
-      .col-xs-12.col-sm-4.emphasis
-        button.btn.btn-primary.btn-block ng-if="!user.favourite" ng-click="favourite()"
-          span.fa.fa-user Favourite
-        button.btn.btn-secondary.btn-block ng-if="user.favourite" ng-click="removeFavourite()"
-          span.fa.fa-user Remove Favourite
+.list-group-item.user
+  .row
+    .profile.col-md-offset-2.col-md-8.col-lg-offset-3.col-lg-6
+      .col-sm-12
+        .col-xs-12.col-sm-8
+          h2 {{ user.username }}
+          p
+            strong> ID:
+            span {{ user.id }}
+          .btn-group.btn-group-sm.float-right ng-if="user.id != currentUser().id"
+            button.btn.btn-success ng-if="!user.following" ng-click="follow()"
+              span.fa.fa-plus-circle Follow
+            button.btn.btn-secondary ng-if="user.following" ng-click="unfollow()"
+              span.fa.fa-minus-circle Unfollow
+            button.btn.btn-primary ng-if="!user.favourable_id" ng-click="favourite(user)"
+              span.fa.fa-user Favourite
+            button.btn.btn-secondary ng-if="user.favourable_id" ng-click="removeFavourite(user)"
+              span.fa.fa-user Remove Favourite
+        .col-xs-12.col-sm-4.text-center
+          img.img-fluid.img-thumbnail alt="" src="{{ user.avatar_medium_url }}"
+          .card ng-if="user.id == currentUser().id"
+            p Update Avatar
+            form name="avatarForm"
+              .form-group
+                input.form-control-file accept="image/*" name="file" ng-model="avatar" ngf-max-size="2MB" ngf-model-invalid="errorFile" ngf-select="" required="" type="file"
+                small.form-text.text-danger ng-show="avatarForm.file.$error.maxSize"
+                  | File too large {{errorFile.size / 1000000|number:1}}MB: max 2M
+              button.btn.btn-primary ng-click="updateAvatar()" ng-disabled="!avatarForm.$valid" Update Avatar

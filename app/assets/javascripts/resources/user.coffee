@@ -8,11 +8,5 @@ angular.module('twitter').factory('User', ['$resource',
     'unfollow':
       method: 'POST'
       url: '/api/users/:id/unfollow.json'
-    'favourite':
-      method: 'POST'
-      url: '/api/users/:id/favourite.json'
-    'removeFavourite':
-      method: 'POST'
-      url: '/api/users/:id/remove_favourite.json'
     )
 ])

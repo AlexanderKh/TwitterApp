@@ -52,6 +52,13 @@ twitter.config([ '$stateProvider', '$urlRouterProvider'
       resolve:
         loginRequired: loginRequired
     )
+    .state('app.favourites',
+      url: '/favourites'
+      templateUrl: 'favourites/index.html'
+      controller: 'FavouritesController'
+      resolve:
+        loginRequired: loginRequired
+    )
     .state('app.login',
       url: '/login'
       templateUrl: 'authentication/index.html'

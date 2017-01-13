@@ -16,13 +16,13 @@ Rails.application.routes.draw do
     end
 
     resources :users do
-    member do
-      post 'follow', to: 'users#follow'
-      post 'unfollow', to: 'users#unfollow'
-      post 'favourite', to: 'users#favourite'
-      post 'remove_favourite', to: 'users#remove_favourite'
+      member do
+        post 'follow', to: 'users#follow'
+        post 'unfollow', to: 'users#unfollow'
+      end
     end
-    end
+
+    resources :favourites
   end
 
   get '*path' => 'home#index'
