@@ -1,21 +1,22 @@
-nav.navbar.navbar-light.bg-faded role="navigation"
-  /button.navbar-toggler.navbar-toggler-right aria-controls="navbarSupportedContent" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarSupportedContent" data-toggle="collapse" type="button"
-    span.navbar-toggler-icon
-  a.navbar-brand ui-sref="/" Twitter
-  .navbar-nav.mr-auto
-    .nav-item
-      a.nav-link ui-sref=".tweets" Tweets
-    .nav-item ng-if="isAuthenticated()"
-      a.nav-link ui-sref=".favourites" Favourites
-    .nav-item ng-if="isAuthenticated()"
-      a.nav-link ui-sref=".user({ id: currentUser().id })" Profile
-    .nav-item
-      a.nav-link ui-sref=".users" All Users
+.container
+  nav.navbar.navbar-light role="navigation"
+    /button.navbar-toggler.navbar-toggler-right aria-controls="navbarSupportedContent" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarSupportedContent" data-toggle="collapse" type="button"
+      span.navbar-toggler-icon
+    a.navbar-brand ui-sref="/" Twitter
+    .navbar-nav.mr-auto
+      .nav-item
+        a.nav-link ui-sref=".tweets" Tweets
+      .nav-item ng-if="isAuthenticated()"
+        a.nav-link ui-sref=".favourites" Favourites
+      .nav-item ng-if="isAuthenticated()"
+        a.nav-link ui-sref=".user({ id: currentUser().id })" Profile
+      .nav-item
+        a.nav-link ui-sref=".users" All Users
 
-    .nav-item ng-if="!isAuthenticated()"
-      a.nav-link ui-sref=".login" Login
-    .nav-item ng-if="isAuthenticated()"
-      a.nav-link ui-sref=".logout" Logout
+      .nav-item ng-if="!isAuthenticated()"
+        a.nav-link ui-sref=".login" Login
+      .nav-item ng-if="isAuthenticated()"
+        a.nav-link ui-sref=".logout" Logout
 
-.container-fluid
+
   div ui-view=""

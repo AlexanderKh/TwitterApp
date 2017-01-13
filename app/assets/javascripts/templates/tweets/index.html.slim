@@ -1,19 +1,13 @@
 .row
   .col.col-xs-12
-    .panel.panel-info
-      .panel-heading
-        | Tweets
-      .panel-body
-        form.tweets-form ng-init="tweetForm = {}"
-          textarea#content.form-control placeholder=("Enter here for tweet...") rows="3" ng-model="tweetForm.content"
-          br
-          .btn-group.pull-right
-            button.btn.btn-primary.btn-sm ng-click="createTweet(tweetForm)" ng-if="!tweet" Tweet
-            button.btn.btn-warning.btn-sm ng-click="exitEditMode()" ng-if="tweet" Cancel
-            button.btn.btn-primary.btn-sm ng-click="updateTweet(tweetForm)" ng-if="tweet" Update
-        .clearfix
-        hr
-        .list-group.tweets
-          div ng-repeat="tweet in tweets"
-            div ng-include="'tweets/tweet.html'"
-        span.text-danger mystery
+    form.tweets-form ng-init="tweetForm = {}"
+      .form-group
+        input.form-control.lead placeholder=("Enter here for tweet...") rows="3" ng-model="tweetForm.content"
+      .btn-group.float-right
+        button.btn.btn-primary ng-click="createTweet(tweetForm)" ng-if="!tweet" Tweet
+    .clearfix
+    hr
+    .list-group.tweets
+      div ng-repeat="tweet in tweets"
+        div ng-include="'tweets/tweet.html'"
+    span.text-danger mystery

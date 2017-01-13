@@ -15,6 +15,7 @@ angular.module('twitter')
             avatar: $scope.avatar
       promise.then (response)->
         $scope.user = response.data
+        $scope.avatar = null
       , (error)->
         console.log(error)
 ])
