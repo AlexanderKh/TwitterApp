@@ -7,15 +7,17 @@
           p
             strong> ID:
             span {{ user.id }}
-          .btn-group.btn-group-sm.float-right ng-if="user.id != currentUser().id"
-            button.btn.btn-success ng-if="!user.following" ng-click="follow()"
-              span Follow
-            button.btn.btn-secondary ng-if="user.following" ng-click="unfollow()"
-              span Unfollow
-            button.btn.btn-primary ng-if="!user.favourable_id" ng-click="favourite(user)"
-              span Favourite
-            button.btn.btn-secondary ng-if="user.favourable_id" ng-click="removeFavourite(user)"
-              span Remove Favourite
+          .btn-group.float-right ng-if="user.id != currentUser().id"
+            .btn-group.btn-group-sm ng-controller="FollowsController"
+              button.btn.btn-success ng-if="!user.following" ng-click="follow(user)"
+                span Follow
+              button.btn.btn-secondary ng-if="user.following" ng-click="unfollow(user)"
+                span Unfollow
+            .btn-group.btn-group-sm ng-controller="FavouriteController"
+              button.btn.btn-primary ng-if="!user.favourable_id" ng-click="favourite(user)"
+                span Favourite
+              button.btn.btn-secondary ng-if="user.favourable_id" ng-click="removeFavourite(user)"
+                span Remove Favourite
         .col-xs-12.col-sm-4.text-center
           img.img-fluid.img-thumbnail alt="" src="{{ user.avatar_medium_url }}"
           .card ng-show="user.id == currentUser().id"

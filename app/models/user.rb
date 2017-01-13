@@ -4,7 +4,8 @@ class User < ApplicationRecord
   has_many :tweets, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :follows, foreign_key: :follower_id, dependent: :destroy
-  has_many :favourites, dependent: :destroy
+  has_many :favourites, foreign_key: :user_id, dependent: :destroy
+  has_many :favouriables, as: :favourable, class_name: Favourite, dependent: :destroy
 
   validates :username, presence: true, uniqueness: true
   validates :password, length: { minimum: 6 }, if: -> { new_record? || changes[:crypted_password] }

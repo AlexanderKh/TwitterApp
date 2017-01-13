@@ -1,4 +1,4 @@
-.list-group-item.tweet
+.list-group-item.tweet ng-controller="TweetController"
   .row
     .col-sm-2.col-xs-4.col-lg-1
       a href="#"
@@ -12,15 +12,22 @@
         .col-xs-6.text-muted {{ tweet.created_at | date:"MM/dd/yyyy 'at' h:mma" }}
       .row
         .col-xs-12
-          p.lead {{ tweet.content }}
+          p.lead ng-if="!tweet.editMode" {{ tweet.content }}
+          .form ng-if="tweet.editMode"
+            .form-group
+              input.form-control.lead type="text" ng-model="tweet.content"
+            .btn-group.btn-group-sm
+              button.btn.btn-success ng-click="updateTweet(tweet)" Save
+              button.btn.btn-secondary ng-click="exitEditMode(tweet)" Cancel
   .row
     .btn-toolbar
       .btn-group.btn-group-sm.float-right
-        button.btn.btn-primary type="button" ng-if="!tweet.favourable_id" ng-click="favourite(tweet)"
-          span aria-hidden="true" Favourite
-        button.btn.btn-default type="button" ng-if="tweet.favourable_id" ng-click="removeFavourite(tweet)"
-          span aria-hidden="true" Favourite
-        button.btn.btn-primary type="button" ng-if="tweet.liked" ng-click="unlikeTweet(tweet)"
+        .btn-group.btn-group-sm ng-controller="FavouriteController"
+          button.btn.btn-default type="button" ng-if="!tweet.favourable_id" ng-click="favourite(tweet)"
+            span aria-hidden="true" Favourite
+          button.btn.btn-success type="button" ng-if="tweet.favourable_id" ng-click="removeFavourite(tweet)"
+            span aria-hidden="true" Favourite
+        button.btn.btn-success type="button" ng-if="tweet.liked" ng-click="unlikeTweet(tweet)"
           span aria-hidden="true" Like
         button.btn.btn-default type="button" ng-if="!tweet.liked" ng-click="likeTweet(tweet)"
           span aria-hidden="true" Like
