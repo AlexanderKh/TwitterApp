@@ -10,6 +10,10 @@ class User < ApplicationRecord
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
 
+  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" },
+                    default_url: 'empty-avatar.png'
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
+
   def feed_tweets
     user_ids = follows.pluck(:followee_id).to_a | [id]
     Tweet.by_user_ids(user_ids)

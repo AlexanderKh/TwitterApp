@@ -11,6 +11,15 @@ class Api::UsersController < APIController
     render @user
   end
 
+  def update
+    head :unauthorized if current_user != @user
+    if @user.update(user_params)
+      render @user
+    else
+      head 500
+    end
+  end
+
   def follow
     if (current_user != @user) && current_user.follows.create(followee: @user)
       head :ok
@@ -36,6 +45,10 @@ class Api::UsersController < APIController
   end
 
   private
+
+  def user_params
+    params.require(:user).permit(:avatar)
+  end
 
   def set_user
     @user = User.find(params[:id])

@@ -14,6 +14,7 @@ gem 'puma', '~> 3.0'
 
 # Persistence
 gem 'pg'
+gem 'paperclip'
 
 # Views
 gem 'sass-rails', '~> 5.0'
@@ -31,6 +32,7 @@ gem 'rails-assets-angular-ui-router'
 gem 'rails-assets-angular-resource'
 gem 'rails-assets-angular-mocks'
 gem 'rails-assets-angular-local-storage'
+gem 'rails-assets-ng-file-upload'
 gem 'rails-assets-satellizer'
 gem 'rails-assets-foundation'
 gem 'rails-assets-tether'

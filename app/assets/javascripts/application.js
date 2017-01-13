@@ -20,6 +20,7 @@
 //= require angular-resource
 //= require angular-mocks
 //= require angular-local-storage
+//= require ng-file-upload
 //= require satellizer
 //
 //= require angular-rails-templates

@@ -62,7 +62,10 @@ GEM
     chromedriver-helper (1.0.0)
       archive-zip (~> 0.7.0)
       nokogiri (~> 1.6)
+    climate_control (0.1.0)
     cliver (0.3.2)
+    cocaine (0.5.8)
+      climate_control (>= 0.0.3, < 1.0)
     coderay (1.1.1)
     coffee-rails (4.2.1)
       coffee-script (>= 2.2.0)
@@ -109,6 +112,7 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
+    mimemagic (0.3.2)
     mini_portile2 (2.1.0)
     minitest (5.10.1)
     multi_json (1.12.1)
@@ -132,6 +136,12 @@ GEM
     omniauth-oauth2 (1.4.0)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
+    paperclip (5.0.0)
+      activemodel (>= 4.2.0)
+      activesupport (>= 4.2.0)
+      cocaine (~> 0.5.5)
+      mime-types
+      mimemagic (~> 0.3.0)
     pg (0.19.0)
     poltergeist (1.12.0)
       capybara (~> 2.1)
@@ -185,6 +195,8 @@ GEM
     rails-assets-jquery.cookie (1.4.1)
       rails-assets-jquery (>= 1.2)
     rails-assets-modernizr (2.8.3)
+    rails-assets-ng-file-upload (12.2.13)
+      rails-assets-angular (> 1.2.0)
     rails-assets-satellizer (0.14.1)
       rails-assets-angular (>= 1.3)
     rails-assets-tether (1.4.0)
@@ -303,6 +315,7 @@ DEPENDENCIES
   memory_test_fix
   omniauth
   omniauth-facebook
+  paperclip
   pg
   poltergeist
   pry
@@ -317,6 +330,7 @@ DEPENDENCIES
   rails-assets-bootstrap (= 4.0.0.alpha.5)
   rails-assets-foundation
   rails-assets-jquery
+  rails-assets-ng-file-upload
   rails-assets-satellizer
   rails-assets-tether
   rspec

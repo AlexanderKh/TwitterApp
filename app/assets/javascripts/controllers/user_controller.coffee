@@ -1,8 +1,9 @@
 angular.module('twitter')
-.controller("UserController", [ '$scope', '$stateParams', 'User'
-  ($scope, $stateParams, User)->
+.controller("UserController", [ '$scope', '$stateParams', '$http', 'User', 'Upload'
+  ($scope, $stateParams, $http, User, Upload)->
 
     $scope.user = User.get(id: $stateParams.id)
+    $scope.avatar = null
 
     $scope.follow = ()->
       $scope.user.$follow (response)->
@@ -32,4 +33,18 @@ angular.module('twitter')
       , (error)->
         console.log(error)
 
+    $scope.setAvatar = (files)->
+      $scope.avatar = files[0]
+
+    $scope.updateAvatar = ()->
+      promise = Upload.upload
+        url: "/api/users/#{$scope.user.id}.json"
+        method: 'PUT',
+        data:
+          user:
+            avatar: $scope.avatar
+      promise.then (response)->
+        $scope.user = response.data
+      , (error)->
+        console.log(error)
 ])

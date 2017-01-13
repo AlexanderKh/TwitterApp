@@ -3,6 +3,7 @@ twitter = angular.module('twitter', [
   'ui.router',
   'ngResource',
   'LocalStorageModule',
+  'ngFileUpload',
   'satellizer'
 ])
 

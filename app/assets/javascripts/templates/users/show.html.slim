@@ -7,7 +7,15 @@
           strong> ID:
           span {{ user.id }}
       .col-xs-12.col-sm-4.text-center
-        img.img-fluid.img-thumbnail alt="" src="http://www.exclutips.com/wp-content/uploads/2015/08/wordpress-custom-user-avatar.png"
+        img.img-fluid.img-thumbnail alt="" src="{{ user.avatar_medium_url }}"
+        .card
+          p Update Avatar
+          form name="avatarForm"
+            .form-group
+              input.form-control-file accept="image/*" name="file" ng-model="avatar" ngf-max-size="2MB" ngf-model-invalid="errorFile" ngf-select="" required="" type="file"
+              small.form-text.text-danger ng-show="avatarForm.file.$error.maxSize"
+                | File too large {{errorFile.size / 1000000|number:1}}MB: max 2M
+            button.btn.btn-primary ng-click="updateAvatar()" ng-disabled="!avatarForm.$valid" Update Avatar
     .col-xs-12.text-center
       .col-xs-12.col-sm-4.emphasis
         button.btn.btn-success.btn-block ng-if="!user.following" ng-click="follow()"
