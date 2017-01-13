@@ -7,6 +7,8 @@ nav.navbar.navbar-light.bg-faded role="navigation"
       a.nav-link ui-sref=".tweets" Tweets
     .nav-item ng-if="isAuthenticated()"
       a.nav-link ui-sref=".user({ id: currentUser().id })" Profile
+    .nav-item
+      a.nav-link ui-sref=".users" All Users
 
     .nav-item ng-if="!isAuthenticated()"
       a.nav-link ui-sref=".login" Login

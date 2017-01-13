@@ -30,8 +30,8 @@
                   .col-xs-12
                     p.lead {{ tweet.content }}
             .row
-              .btn-toolbar.justify-content-right
-                .btn-group.btn-group-sm
+              .btn-toolbar
+                .btn-group.btn-group-sm.float-right
                   button.btn.btn-primary type="button" ng-if="tweet.liked" ng-click="unlikeTweet(tweet)"
                     span.glyphicon.glyphicon-heart aria-hidden="true" Like
                   button.btn.btn-default type="button" ng-if="!tweet.liked" ng-click="likeTweet(tweet)"
