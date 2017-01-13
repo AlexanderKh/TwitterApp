@@ -19,4 +19,24 @@ RSpec.describe Tweet do
 
     it { is_expected.to eq([tweet_2, tweet_1, tweet_0]) }
   end
+
+  describe '#feed_tweets' do
+    let(:follow) { create :follow }
+    let(:followee) { follow.followee }
+    let(:follower) { follow.follower }
+    let!(:own_tweet) { create :tweet, user: follower }
+
+    subject { follower.feed_tweets }
+
+    context 'without followed tweet' do
+      it { should eq [own_tweet] }
+    end
+
+    context 'with followed tweet' do
+      let!(:followed_tweet) { create :tweet, user: followee }
+
+      it { should eq [followed_tweet, own_tweet] }
+    end
+
+  end
 end

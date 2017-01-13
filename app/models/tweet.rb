@@ -7,4 +7,7 @@ class Tweet < ApplicationRecord
   validates_length_of :content, maximum: 100
 
   default_scope { order(created_at: :desc) }
+
+  scope :by_user_ids, ->(ids) { where(user_id: ids) }
+
 end

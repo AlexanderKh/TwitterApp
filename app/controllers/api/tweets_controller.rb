@@ -5,7 +5,7 @@ class Api::TweetsController < APIController
   before_action :set_public_tweet, only: [:like, :unlike]
 
   def index
-    @tweets = current_user.tweets
+    @tweets = current_user.feed_tweets
   end
 
   def create

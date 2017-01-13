@@ -13,7 +13,7 @@ class Auth::AuthenticationController < ApplicationController
     user = User.new(registration_params)
     if user.valid?
       user.save!
-      render json: { token: user_token(user) }
+      render json: { token: user_token(user), user: user }
     else
       head 422
     end

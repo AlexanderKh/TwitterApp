@@ -14,7 +14,8 @@ angular.module('twitter')
     $scope.register = (registrationData)->
       promise = $auth.signup(auth: registrationData)
       promise.then (response)->
-        $auth.setToken(response)
+        localStorageService.set('currentUser', response.data.user)
+        $auth.setToken(response.data.token)
         $state.go('app.tweets')
         console.log 'You have successfully created a new account and have been signed-in'
       , (response) ->
