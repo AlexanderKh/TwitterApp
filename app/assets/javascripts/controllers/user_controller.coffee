@@ -37,9 +37,6 @@ angular.module('twitter')
       , (error)->
         console.log(error)
 
-    $scope.setAvatar = (files)->
-      $scope.avatar = files[0]
-
     $scope.updateAvatar = ()->
       promise = Upload.upload
         url: "/api/users/#{$scope.user.id}.json"

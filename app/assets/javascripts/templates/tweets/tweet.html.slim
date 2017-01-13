@@ -17,14 +17,14 @@
     .btn-toolbar
       .btn-group.btn-group-sm.float-right
         button.btn.btn-primary type="button" ng-if="!tweet.favourable_id" ng-click="favourite(tweet)"
-          span.glyphicon.glyphicon-heart aria-hidden="true" Favourite
+          span aria-hidden="true" Favourite
         button.btn.btn-default type="button" ng-if="tweet.favourable_id" ng-click="removeFavourite(tweet)"
-          span.glyphicon.glyphicon-heart aria-hidden="true" Favourite
+          span aria-hidden="true" Favourite
         button.btn.btn-primary type="button" ng-if="tweet.liked" ng-click="unlikeTweet(tweet)"
-          span.glyphicon.glyphicon-heart aria-hidden="true" Like
+          span aria-hidden="true" Like
         button.btn.btn-default type="button" ng-if="!tweet.liked" ng-click="likeTweet(tweet)"
-          span.glyphicon.glyphicon-heart aria-hidden="true" Like
-        button.btn.btn-warning type="button" ng-click="editTweet(tweet)"
-          span.glyphicon.glyphicon-pencil aria-hidden="true" Edit
-        button.btn.btn-danger type="button" ng-click="deleteTweet(tweet)"
-          span.glyphicon.glyphicon-remove aria-hidden="true" Remove
+          span aria-hidden="true" Like
+        button.btn.btn-warning type="button" ng-if="tweet.user_id == currentUser().id" ng-click="editTweet(tweet)"
+          span aria-hidden="true" Edit
+        button.btn.btn-danger type="button" ng-if="tweet.user_id == currentUser().id" ng-click="deleteTweet(tweet)"
+          span aria-hidden="true" Remove

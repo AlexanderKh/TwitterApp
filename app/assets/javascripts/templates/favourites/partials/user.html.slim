@@ -10,8 +10,8 @@
             span {{ favourite.id }}
           .btn-group.btn-group-sm.float-right ng-if="favourite.id != currentUser().id"
             button.btn.btn-primary ng-if="!favourite.favourable_id" ng-click="favourite(favourite)"
-              span.fa.fa-user Favourite
+              span Favourite
             button.btn.btn-secondary ng-if="favourite.favourable_id" ng-click="removeFavourite(favourite)"
-              span.fa.fa-user Remove Favourite
+              span Remove Favourite
         .col-xs-12.col-sm-4.text-center
           img.img-fluid.img-thumbnail alt="" src="{{ favourite.avatar_medium_url }}"
