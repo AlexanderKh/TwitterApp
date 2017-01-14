@@ -2,11 +2,12 @@ class Auth::OAuthController < ApplicationController
 
   def callback
     provider = auth_params[:provider]
+
+    # See https://github.com/sahat/satellizer/issues/287
     unless Rails.cache.read("#{request.referer}")
-      Rails.cache.write("#{request.referer}", true, expires_in: 1.seconds)
+      Rails.cache.write("#{request.referer}", true, expires_in: 5.seconds)
       return head :ok
     end
-    # binding.pry
 
     if (@user = login_from(provider))
       render json: { token: user_token(@user), user: @user }
@@ -25,9 +26,5 @@ class Auth::OAuthController < ApplicationController
 
   def auth_params
     params.permit(:code, :provider)
-  end
-
-  def user_token(user)
-    TokenProvider.issue_token(user_id: user.id)
   end
 end
