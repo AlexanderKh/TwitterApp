@@ -60,7 +60,7 @@ Rails.application.config.sorcery.configure do |config|
 
   config.facebook.key = Rails.application.secrets.facebook_key
   config.facebook.secret = Rails.application.secrets.facebook_secret
-  config.facebook.callback_url = Rails.application.secrets.facebook_url + '/auth/facebook/'
+  config.facebook.callback_url = "#{Rails.application.secrets.facebook_url}/auth/facebook/"
   config.facebook.user_info_mapping = { username: 'name' }
   config.facebook.access_permissions = %w(public_profile,offline_access)
   config.facebook.display = 'page'

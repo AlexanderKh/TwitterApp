@@ -10,13 +10,20 @@ RSpec.describe Like do
     it { is_expected.to validate_presence_of(:tweet) }
   end
 
-  describe 'ordering' do
-    3.times do |i|
-      let!(:"tweet_#{i}") { create(:tweet) }
+  describe 'likes count' do
+    let!(:tweet) { create :tweet }
+
+    it 'should update likes count whenever likes are created or destroyed' do
+      expect(tweet.likes_count).to eq 0
+
+      3.times { create :like, tweet: tweet }
+      expect(tweet.likes_count).to eq 3
+
+      tweet.likes.first.destroy
+      expect(tweet.likes_count).to eq 2
+
+      tweet.likes.destroy_all
+      expect(tweet.likes_count).to eq 0
     end
-
-    subject { Tweet.all }
-
-    it { is_expected.to eq([tweet_2, tweet_1, tweet_0]) }
   end
 end
