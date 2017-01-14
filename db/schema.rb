@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170113170829) do
+ActiveRecord::Schema.define(version: 20170114093234) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,12 +24,23 @@ ActiveRecord::Schema.define(version: 20170113170829) do
     t.index ["provider", "uid"], name: "index_authentications_on_provider_and_uid", using: :btree
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.string   "content"
+    t.integer  "user_id"
+    t.integer  "tweet_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tweet_id"], name: "index_comments_on_tweet_id", using: :btree
+    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
+  end
+
   create_table "favourites", force: :cascade do |t|
     t.string   "favourable_type"
     t.integer  "favourable_id"
     t.integer  "user_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.index ["favourable_id", "favourable_type", "user_id"], name: "unique_favourite", unique: true, using: :btree
     t.index ["favourable_type", "favourable_id"], name: "index_favourites_on_favourable_type_and_favourable_id", using: :btree
     t.index ["user_id"], name: "index_favourites_on_user_id", using: :btree
   end
@@ -75,6 +86,8 @@ ActiveRecord::Schema.define(version: 20170113170829) do
     t.index ["username"], name: "index_users_on_username", unique: true, using: :btree
   end
 
+  add_foreign_key "comments", "tweets"
+  add_foreign_key "comments", "users"
   add_foreign_key "favourites", "users"
   add_foreign_key "follows", "users", column: "followee_id"
   add_foreign_key "follows", "users", column: "follower_id"

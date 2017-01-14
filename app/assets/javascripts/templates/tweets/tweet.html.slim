@@ -1,15 +1,17 @@
-.list-group-item.tweet ng-controller="TweetController"
+.list-group-item.tweet ng-controller="TweetCommonController"
   .row
-    .col-sm-2.col-xs-4.col-lg-1
-      a href="#"
+    .hidden-xs-down.col-sm-2.col-lg-1
+      a ui-sref="app.user({id: tweet.user_id})"
         img.rounded-circle.img-fluid alt="" src="{{ tweet.user_avatar_url }}"
-    .col-sm-10.col-xs-8.col-lg-11
+    .col-xs-12.col-sm-10.col-lg-11
       .row
-        .col-xs-6
+        .col-xs-12.col-sm-6
           a ui-sref="app.user({id: tweet.user_id})"
             span.text-success ng-class="{ 'font-weight-bold': tweet.user_id == currentUser().id }"
               | @{{ tweet.user_name }}
-        .col-xs-6.text-muted {{ tweet.created_at | date:"MM/dd/yyyy 'at' h:mma" }}
+        .col-xs-12.col-sm-6
+          a ui-sref="app.tweet({id: tweet.id})"
+            span.text-muted {{ tweet.created_at | date:"MM/dd/yyyy 'at' h:mma" }}
       .row
         .col-xs-12
           p.lead ng-if="!tweet.editMode" {{ tweet.content }}

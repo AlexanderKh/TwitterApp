@@ -1,43 +1,30 @@
 angular.module('twitter')
-.controller("TweetController", [ '$scope', '$window', 'Tweet',
-  ($scope, $window, Tweet)->
+.controller("TweetController", [ '$scope', '$stateParams', 'Tweet', 'Comment',
+  ($scope, $stateParams, Tweet, Comment)->
 
-    $scope.updateTweet = (tweet)->
-      Tweet.update tweet
+    $scope.tweet = Tweet.get(id: $stateParams.id)
+
+    $scope.handleRemove = (tweet)->
+      history.back()
+
+    $scope.createComment = (formData)->
+      Comment.save {tweet_id : $scope.tweet.id}, comment: formData
       , (response)->
-        angular.copy response, tweet
-      , (error)->
-        console.log(error.data)
-
-    $scope.editTweet = (tweet)->
-      tweet.oldContent = tweet.content
-      tweet.editMode = true
-
-    $scope.exitEditMode = (tweet)->
-      tweet.content = tweet.oldContent
-      tweet.editMode = false
-
-    $scope.likeTweet = (tweet)->
-      Tweet.like tweet
-      , (response)->
-        tweet.liked = true
-      , (error)->
-        console.log(error.data)
-
-    $scope.unlikeTweet = (tweet)->
-      Tweet.unlike tweet
-      , (response)->
-        tweet.liked = false
-      , (error)->
-        console.log(error.data)
-
-    $scope.deleteTweet = (tweet)->
-      return unless $window.confirm('Really delete?')
-      Tweet.remove tweet
-      , (response)->
-        if $scope.handleRemove
-          $scope.handleRemove(tweet)
+        $scope.tweet.comments.unshift response
+        $scope.commentsForm = { }
       , (error)->
         console.log(error)
 
+    $scope.removeComment = (comment)->
+      Comment.remove comment
+      , (response)->
+        index = $scope.tweet.comments.indexOf(comment)
+        $scope.tweet.comments.splice(index, 1)
+      , (error)->
+        console.log(error)
+
+    $scope.canDelete = (comment)->
+      ownComment = comment.user_id == $scope.currentUser().id
+      tweetsOwner = $scope.tweet.id == $scope.currentUser().id
+      ownComment || tweetsOwner
 ])

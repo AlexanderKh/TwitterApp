@@ -2,7 +2,7 @@ angular.module('twitter')
 .controller("ApplicationController", [ '$scope', '$auth', 'localStorageService'
   ($scope, $auth, localStorageService)->
 
-    $scope.isAuthenticated = ->
+    $scope.isAuthenticated = ()->
       $auth.isAuthenticated()
 
     $scope.currentUser = ()->

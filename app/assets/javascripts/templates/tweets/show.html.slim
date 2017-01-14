@@ -1,0 +1,15 @@
+div ng-include="'tweets/tweet.html'"
+.list-group
+  .list-group-item
+    form.comments-form.clearfix ng-submit="createComment(commentsForm)" ng-init="commentsForm = { }"
+      .form-group
+        input.form-control.lead placeholder=("Enter here for comment...") ng-model="commentsForm.content"
+      .btn-group.float-right
+        button.btn.btn-primary type="submit" Comment
+  .list-group-item.list-inline ng-repeat="comment in tweet.comments"
+    a.list-inline-item ui-sref="app.user({id: comment.user_id})"
+      span.text-success ng-class="{ 'font-weight-bold': comment.user_id == currentUser().id }"
+        | @{{ comment.user_name }}
+    span.list-inline-item {{ comment.content }}
+    .btn-group.btn-group-sm.list-inline-item.float-right ng-if="canDelete(comment)"
+      button.btn.btn-danger ng-click="removeComment(comment)" Remove

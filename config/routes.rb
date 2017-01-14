@@ -8,11 +8,15 @@ Rails.application.routes.draw do
   end
 
   namespace 'api' do
+    resources :favourites
+
     resources :tweets do
       member do
         post 'like', to: 'tweets#like'
         post 'unlike', to: 'tweets#unlike'
       end
+
+      resources :comments
     end
 
     resources :users do
@@ -21,8 +25,6 @@ Rails.application.routes.draw do
         post 'unfollow', to: 'users#unfollow'
       end
     end
-
-    resources :favourites
   end
 
   get '*path' => 'home#index'

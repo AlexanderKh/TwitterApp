@@ -1,11 +1,10 @@
 .row
   .col.col-xs-12
-    form.tweets-form ng-init="tweetForm = {}"
+    form.tweets-form.clearfix ng-init="tweetForm = {}"
       .form-group
-        input.form-control.lead placeholder=("Enter here for tweet...") rows="3" ng-model="tweetForm.content"
+        input.form-control.lead placeholder=("Enter here for tweet...") ng-model="tweetForm.content"
       .btn-group.float-right
         button.btn.btn-primary ng-click="createTweet(tweetForm)" ng-if="!tweet" Tweet
-    .clearfix
     hr
     .list-group.tweets
       div ng-repeat="tweet in tweets"

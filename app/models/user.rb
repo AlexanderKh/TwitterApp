@@ -2,6 +2,7 @@ class User < ApplicationRecord
   authenticates_with_sorcery!
 
   has_many :tweets, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :follows, foreign_key: :follower_id, dependent: :destroy
   has_many :favourites, foreign_key: :user_id, dependent: :destroy

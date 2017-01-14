@@ -40,6 +40,13 @@ twitter.config([ '$stateProvider', '$urlRouterProvider'
       resolve:
         loginRequired: loginRequired
     )
+    .state('app.tweet',
+      url: '/tweets/:id'
+      templateUrl: 'tweets/show.html'
+      controller: 'TweetController'
+      resolve:
+        loginRequired: loginRequired
+    )
     .state('app.users',
       url: '/users'
       templateUrl: 'users/index.html'

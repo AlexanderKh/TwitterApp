@@ -4,10 +4,7 @@
       .col-xs-12.col-sm-8.col-md-9.col-lg-10
         a ui-sref="app.user({ id: user.id })"
           p.lead {{ user.username }}
-        p
-          strong> ID:
-          span {{ user.id }}
-        .btn-group.float-right ng-if="user.id != currentUser().id"
+        .btn-group ng-if="user.id != currentUser().id"
           .btn-group.btn-group-sm ng-controller="FollowsController"
             button.btn.btn-default ng-if="!user.following" ng-click="follow(user)"
               span Follow

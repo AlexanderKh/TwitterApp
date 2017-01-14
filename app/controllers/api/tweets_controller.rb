@@ -2,10 +2,13 @@ class Api::TweetsController < APIController
 
   before_action :authenticate!
   before_action :set_tweet, only: [:update, :destroy]
-  before_action :set_public_tweet, only: [:like, :unlike]
+  before_action :set_public_tweet, only: [:show, :like, :unlike]
 
   def index
     @tweets = current_user.feed_tweets
+  end
+
+  def show
   end
 
   def create
