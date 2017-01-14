@@ -21,6 +21,7 @@ angular.module('twitter')
       Tweet.like tweet
       , (response)->
         tweet.liked = true
+        tweet.likes_count++
       , (error)->
         console.log(error.data)
 
@@ -28,6 +29,7 @@ angular.module('twitter')
       Tweet.unlike tweet
       , (response)->
         tweet.liked = false
+        tweet.likes_count--
       , (error)->
         console.log(error.data)
 

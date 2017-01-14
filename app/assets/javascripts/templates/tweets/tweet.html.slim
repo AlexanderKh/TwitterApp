@@ -33,9 +33,9 @@
             button.btn.btn-success type="button" ng-if="tweet.favourable_id" ng-click="removeFavourite(tweet)"
               span aria-hidden="true" Favourite
           button.btn.btn-success type="button" ng-if="tweet.liked" ng-click="unlikeTweet(tweet)"
-            span aria-hidden="true" Like
+            span aria-hidden="true" Like {{ tweet.likes_count }}
           button.btn.btn-default type="button" ng-if="!tweet.liked" ng-click="likeTweet(tweet)"
-            span aria-hidden="true" Like
+            span aria-hidden="true" Like {{ tweet.likes_count }}
           button.btn.btn-warning type="button" ng-if="tweet.user_id == currentUser().id" ng-click="editTweet(tweet)"
             span aria-hidden="true" Edit
           button.btn.btn-danger type="button" ng-if="tweet.user_id == currentUser().id" ng-click="deleteTweet(tweet)"
