@@ -50,7 +50,7 @@ Rails.application.config.sorcery.configure do |config|
   # What providers are supported by this app, i.e. [:twitter, :facebook, :github, :linkedin, :xing, :google, :liveid, :salesforce, :slack] .
   # Default: `[]`
   #
-  # config.external_providers =
+  config.external_providers = [:facebook]
 
   # You can change it by your local ca_file. i.e. '/etc/pki/tls/certs/ca-bundle.crt'
   # Path to ca_file. By default use a internal ca-bundle.crt.
@@ -58,13 +58,13 @@ Rails.application.config.sorcery.configure do |config|
   #
   # config.ca_file =
 
-  # config.facebook.key = ""
-  # config.facebook.secret = ""
-  # config.facebook.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=facebook"
-  # config.facebook.user_info_mapping = {:email => "name"}
-  # config.facebook.access_permissions = ["email", "publish_actions"]
-  # config.facebook.display = "page"
-  # config.facebook.api_version = "v2.2"
+  config.facebook.key = '380511815643407'
+  config.facebook.secret = '12afc42551f8dd04c76edbbb420c3719'
+  config.facebook.callback_url = 'http://localhost:3000/auth/facebook/'
+  config.facebook.user_info_mapping = { username: 'name' }
+  config.facebook.access_permissions = %w(public_profile,offline_access)
+  config.facebook.display = 'page'
+  config.facebook.api_version = 'v2.5'
 
   # config.github.key = ""
   # config.github.secret = ""
@@ -323,7 +323,7 @@ Rails.application.config.sorcery.configure do |config|
     # Class which holds the various external provider data for this user.
     # Default: `nil`
     #
-    # user.authentications_class =
+    user.authentications_class = Authentication
 
     # User's identifier in authentications class.
     # Default: `:user_id`

@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   namespace 'auth' do
     post :login, to: 'authentication#login'
     post :signup, to: 'authentication#register'
+
+    post '/:provider', to: 'o_auth#callback'
+    get '/:provider', to: 'o_auth#callback'
   end
 
   namespace 'api' do

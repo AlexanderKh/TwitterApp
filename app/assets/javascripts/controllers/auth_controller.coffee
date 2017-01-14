@@ -3,7 +3,14 @@ angular.module('twitter')
   ($scope, $auth, $state, localStorageService)->
 
     $scope.authenticate = (provider)->
-      $auth.authenticate(provider)
+      promise = $auth.authenticate(provider)
+      promise.then (response)->
+        localStorageService.set('currentUser', response.data.user)
+        $auth.setToken(response.data.token)
+        $state.go('app.tweets')
+        console.log "You have successfully signed-in using #{provider}"
+      , (response) ->
+        console.log response.data.message
 
     $scope.login = (loginData)->
       promise = $auth.login(auth: loginData)

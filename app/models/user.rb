@@ -1,5 +1,7 @@
 class User < ApplicationRecord
-  authenticates_with_sorcery!
+  authenticates_with_sorcery! do |config|
+    config.authentications_class = Authentication
+  end
 
   has_many :tweets, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -7,6 +9,9 @@ class User < ApplicationRecord
   has_many :follows, foreign_key: :follower_id, dependent: :destroy
   has_many :favourites, foreign_key: :user_id, dependent: :destroy
   has_many :favouriables, as: :favourable, class_name: Favourite, dependent: :destroy
+  has_many :authentications, dependent: :destroy
+
+  accepts_nested_attributes_for :authentications
 
   validates :username, presence: true, uniqueness: true
   validates :password, length: { minimum: 6 }, if: -> { new_record? || changes[:crypted_password] }
