@@ -86,7 +86,7 @@ twitter.config(['$authProvider'
   ($authProvider)->
 
     $authProvider.facebook({
-      clientId: '380511815643407'
+      clientId: facebook_key
       redirectUri: window.location.origin + '/auth/facebook/'
     });
 ])

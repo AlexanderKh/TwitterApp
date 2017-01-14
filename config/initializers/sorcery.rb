@@ -58,13 +58,13 @@ Rails.application.config.sorcery.configure do |config|
   #
   # config.ca_file =
 
-  config.facebook.key = '380511815643407'
-  config.facebook.secret = '12afc42551f8dd04c76edbbb420c3719'
-  config.facebook.callback_url = 'http://localhost:3000/auth/facebook/'
+  config.facebook.key = Rails.application.secrets.facebook_key
+  config.facebook.secret = Rails.application.secrets.facebook_secret
+  config.facebook.callback_url = Rails.application.secrets.facebook_url + '/auth/facebook/'
   config.facebook.user_info_mapping = { username: 'name' }
   config.facebook.access_permissions = %w(public_profile,offline_access)
   config.facebook.display = 'page'
-  config.facebook.api_version = 'v2.5'
+  config.facebook.api_version = Rails.application.secrets.facebook_api_version
 
   # config.github.key = ""
   # config.github.secret = ""
