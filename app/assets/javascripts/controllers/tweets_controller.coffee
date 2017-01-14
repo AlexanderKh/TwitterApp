@@ -11,7 +11,7 @@ angular.module('twitter')
         $scope.tweets.unshift response
         $scope.tweetForm = { }
       , (error)->
-        console.log(error.data)
+        console.log(error)
 
     $scope.handleRemove = (tweet)->
       index = $scope.tweets.indexOf(tweet)
