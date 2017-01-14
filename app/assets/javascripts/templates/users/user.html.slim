@@ -18,7 +18,7 @@
       .col-xs-12.col-sm-4.col-md-3.col-lg-2.text-center
         img.img-fluid.img-thumbnail alt="" src="{{ user.avatar_medium_url }}"
       .col-xs-12 ng-show="user.id == currentUser().id"
-        form.card.card-block name="avatarForm"
+        form name="avatarForm"
           .form-group
             label for="avatarFile" Upload Avatar
             input#avatarFile.form-control-file accept="image/*" name="avatar" ng-model="avatar" ngf-max-size="2MB" ngf-model-invalid="errorFile" ngf-select="" required="" type="file"

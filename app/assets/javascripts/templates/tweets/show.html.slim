@@ -3,13 +3,16 @@ div ng-include="'tweets/tweet.html'"
   .list-group-item
     form.comments-form.clearfix ng-submit="createComment(commentsForm)" ng-init="commentsForm = { }"
       .form-group
-        input.form-control.lead placeholder=("Enter here for comment...") ng-model="commentsForm.content"
+        input.form-control.lead aria-describedby="commentHelp" required="true" maxlength="100" placeholder=("Enter here for comment...") ng-model="commentsForm.content"
+        small.form-text.text-muted#commentHelp Maximum comment length - 100 characters
       .btn-group.float-right
         button.btn.btn-primary type="submit" Comment
-  .list-group-item.list-inline ng-repeat="comment in tweet.comments"
+  .list-group-item.list-inline.clearfix ng-repeat="comment in tweet.comments"
     a.list-inline-item ui-sref="app.user({id: comment.user_id})"
       span.text-success ng-class="{ 'font-weight-bold': comment.user_id == currentUser().id }"
         | @{{ comment.user_name }}
     span.list-inline-item {{ comment.content }}
     .btn-group.btn-group-sm.list-inline-item.float-right ng-if="canDelete(comment)"
       button.btn.btn-danger ng-click="removeComment(comment)" Remove
+  .list-group-item ng-if="!tweet.comments.length"
+    p.text-muted There are no comments so far

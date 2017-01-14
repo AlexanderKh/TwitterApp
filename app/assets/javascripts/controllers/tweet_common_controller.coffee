@@ -1,6 +1,6 @@
 angular.module('twitter')
-.controller("TweetCommonController", [ '$scope', '$window', 'Tweet',
-  ($scope, $window, Tweet)->
+.controller("TweetCommonController", [ '$scope', '$window', '$state', 'Tweet',
+  ($scope, $window, $state, Tweet)->
 
     $scope.updateTweet = (tweet)->
       Tweet.update tweet
@@ -40,4 +40,6 @@ angular.module('twitter')
       , (error)->
         console.log(error)
 
+    $scope.opened = ()->
+      $state.is('app.tweet')
 ])

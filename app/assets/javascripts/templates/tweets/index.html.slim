@@ -2,11 +2,13 @@
   .col.col-xs-12
     form.tweets-form.clearfix ng-init="tweetForm = {}"
       .form-group
-        input.form-control.lead placeholder=("Enter here for tweet...") ng-model="tweetForm.content"
+        input.form-control.lead aria-describedby="tweetHelp" required="true" maxlength="100" placeholder=("Enter here for tweet...") ng-model="tweetForm.content"
+        small.form-text.text-muted#tweetHelp Maximum tweet length - 100 characters
       .btn-group.float-right
         button.btn.btn-primary ng-click="createTweet(tweetForm)" ng-if="!tweet" Tweet
     hr
     .list-group.tweets
       div ng-repeat="tweet in tweets"
         div ng-include="'tweets/tweet.html'"
-    span.text-danger mystery
+      .list-group-item ng-if="!tweets.length"
+        p.text-muted There is nothing here, go tweet!

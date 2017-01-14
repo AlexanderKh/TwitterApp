@@ -14,7 +14,7 @@ class Auth::AuthenticationController < ApplicationController
       user.save!
       render json: { token: user_token(user), user: user }
     else
-      head 422
+      render json: user.errors.full_messages, status: 422
     end
   end
 

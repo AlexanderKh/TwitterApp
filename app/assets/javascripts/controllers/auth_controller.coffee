@@ -17,6 +17,8 @@ angular.module('twitter')
       promise.then (response)->
         localStorageService.set('currentUser', response.data.user)
         $state.go('app.tweets')
+      , (error)->
+        alert('Username and/or password is invalid')
 
     $scope.register = (registrationData)->
       promise = $auth.signup(auth: registrationData)
@@ -26,5 +28,6 @@ angular.module('twitter')
         $state.go('app.tweets')
         console.log 'You have successfully created a new account and have been signed-in'
       , (response) ->
-        console.log response.data.message
+        if response.data
+          alert response.data.join(', ')
 ])

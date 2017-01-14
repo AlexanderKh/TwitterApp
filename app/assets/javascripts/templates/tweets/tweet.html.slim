@@ -22,18 +22,21 @@
               button.btn.btn-success ng-click="updateTweet(tweet)" Save
               button.btn.btn-secondary ng-click="exitEditMode(tweet)" Cancel
   .row
-    .btn-toolbar
-      .btn-group.btn-group-sm.float-right
-        .btn-group.btn-group-sm ng-controller="FavouriteController"
-          button.btn.btn-default type="button" ng-if="!tweet.favourable_id" ng-click="favourite(tweet)"
-            span aria-hidden="true" Favourite
-          button.btn.btn-success type="button" ng-if="tweet.favourable_id" ng-click="removeFavourite(tweet)"
-            span aria-hidden="true" Favourite
-        button.btn.btn-success type="button" ng-if="tweet.liked" ng-click="unlikeTweet(tweet)"
-          span aria-hidden="true" Like
-        button.btn.btn-default type="button" ng-if="!tweet.liked" ng-click="likeTweet(tweet)"
-          span aria-hidden="true" Like
-        button.btn.btn-warning type="button" ng-if="tweet.user_id == currentUser().id" ng-click="editTweet(tweet)"
-          span aria-hidden="true" Edit
-        button.btn.btn-danger type="button" ng-if="tweet.user_id == currentUser().id" ng-click="deleteTweet(tweet)"
-          span aria-hidden="true" Remove
+    .col-xs-12
+      .btn-toolbar
+        .btn-group.btn-group-sm.float-right
+          button.btn.btn-primary type="button" ui-sref="app.tweet({id: tweet.id})" ng-if="!opened()"
+            span aria-hidden="true" Open
+          .btn-group.btn-group-sm ng-controller="FavouriteController"
+            button.btn.btn-default type="button" ng-if="!tweet.favourable_id" ng-click="favourite(tweet)"
+              span aria-hidden="true" Favourite
+            button.btn.btn-success type="button" ng-if="tweet.favourable_id" ng-click="removeFavourite(tweet)"
+              span aria-hidden="true" Favourite
+          button.btn.btn-success type="button" ng-if="tweet.liked" ng-click="unlikeTweet(tweet)"
+            span aria-hidden="true" Like
+          button.btn.btn-default type="button" ng-if="!tweet.liked" ng-click="likeTweet(tweet)"
+            span aria-hidden="true" Like
+          button.btn.btn-warning type="button" ng-if="tweet.user_id == currentUser().id" ng-click="editTweet(tweet)"
+            span aria-hidden="true" Edit
+          button.btn.btn-danger type="button" ng-if="tweet.user_id == currentUser().id" ng-click="deleteTweet(tweet)"
+            span aria-hidden="true" Remove
