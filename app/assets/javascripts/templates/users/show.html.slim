@@ -1,0 +1,7 @@
+div ng-include="'users/user.html'"
+.list-group.user-tweets
+  h4 ng-if="user.tweets.length" Tweets by {{ user.username }}
+  div ng-repeat="tweet in user.tweets"
+    div ng-include="'tweets/tweet.html'"
+  .list-group-item ng-if="!user.tweets.length"
+    p.text-muted This user haven't tweeted yet

@@ -54,7 +54,7 @@ twitter.config([ '$stateProvider', '$urlRouterProvider'
     )
     .state('app.user',
       url: '/users/:id'
-      templateUrl: 'users/user.html'
+      templateUrl: 'users/show.html'
       controller: 'UserController'
       resolve:
         loginRequired: loginRequired

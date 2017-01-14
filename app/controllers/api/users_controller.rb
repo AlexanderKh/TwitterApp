@@ -8,7 +8,6 @@ class Api::UsersController < APIController
   end
 
   def show
-    render @user
   end
 
   def update
