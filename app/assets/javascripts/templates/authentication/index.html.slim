@@ -10,14 +10,11 @@
               .form-group
                 label.control-label for="login-username"  Username
                 input#login-username.form-control required="" autofocus="true" title=("Please enter you username") type="text" ng-model="loginForm.username"
-                span.help-block
               .form-group
                 label.control-label for="login-password"  Password
-                input#login-password.form-control required="" title=("Please enter your password") type="password" autocomplete="off" ng-model="loginForm.password"
-                span.help-block
-              .form-group
-                #loginErrorMsg.alert.alert-error.hide Wrong username or password
-                button.btn.btn-success.btn-block type="submit"  Login
+                input#login-password.form-control required="" min="8" title=("Please enter your password") type="password" autocomplete="off" ng-model="loginForm.password"
+              button.btn.btn-success.btn-block type="submit"  Login
+            br
             button.btn.btn-info.btn-block type="submit" ng-click="authenticate('facebook')" Login with facebook
         .col-sm-6
           .well
@@ -25,15 +22,10 @@
               .form-group
                 label.control-label for="register-username"  Username
                 input#register-username.form-control required="" autofocus="true" title=("Please enter you username") type="text" ng-model="registrationForm.username"
-                span.help-block
               .form-group
                 label.control-label for="register-password"  Password
-                input#register-password.form-control required="" title=("Please enter your password") type="password" autocomplete="off" ng-model="registrationForm.password"
-                span.help-block
+                input#register-password.form-control required="" min="8" title=("Please enter your password") type="password" autocomplete="off" ng-model="registrationForm.password"
               .form-group
                 label.control-label for="register-password-confirmation"  Password Confirmation
-                input#register-password-confirmation.form-control required="" title=("Please confirm your password") type="password" autocomplete="off" ng-model="registrationForm.password_confirmation"
-                span.help-block
-              .form-group
-                #registerErrorMsg.alert.alert-error.hide Wrong username or password
-                button.btn.btn-info.btn-block type="submit" Register now!
+                input#register-password-confirmation.form-control required="" min="8" title=("Please confirm your password") type="password" autocomplete="off" ng-model="registrationForm.password_confirmation"
+              button.btn.btn-info.btn-block type="submit" Register now!
