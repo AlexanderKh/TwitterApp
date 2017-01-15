@@ -1,5 +1,6 @@
 feature 'Tweets' do
   let(:tweets_page) { TweetsPage.new }
+  let(:favourites_page) { FavouritesPage.new }
 
   let(:user) { create :user }
   before { login user }
@@ -24,5 +25,30 @@ feature 'Tweets' do
       expect(page).not_to have_content(long_text)
     end
 
+  end
+
+  context 'with tweet' do
+    let!(:tweet) { create :tweet, user: user }
+    let(:text) { 'Some sample text' }
+
+    scenario 'success flow' do
+      tweets_page.open
+      expect(page).to have_content 'Like 0'
+      find('button', text: 'Like 0').click
+      expect(page).to have_content 'Like 1'
+      find('button', text: 'Edit').click
+      within '.tweet' do
+        fill_in 'content', with: text
+      end
+      find('button', text: 'Save').click
+      expect(page).to have_content text
+      find('button', text: 'Favourite').click
+      favourites_page.open
+      expect(page).to have_content text
+      tweets_page.open
+      find('button', text: 'Remove').click
+      accept_confirm
+      expect(page).not_to have_content text
+    end
   end
 end

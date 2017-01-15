@@ -17,7 +17,7 @@
           p.lead ng-if="!tweet.editMode" {{ tweet.content }}
           .form ng-if="tweet.editMode"
             .form-group
-              input.form-control.lead type="text" ng-model="tweet.content"
+              input.form-control.lead name="content" type="text" ng-model="tweet.content"
             .btn-group.btn-group-sm
               button.btn.btn-success ng-click="updateTweet(tweet)" Save
               button.btn.btn-secondary ng-click="exitEditMode(tweet)" Cancel
