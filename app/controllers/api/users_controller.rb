@@ -13,7 +13,7 @@ class Api::UsersController < APIController
   def update
     head :unauthorized if current_user != @user
     if @user.update(user_params)
-      render @user
+      render 'show'
     else
       head 500
     end

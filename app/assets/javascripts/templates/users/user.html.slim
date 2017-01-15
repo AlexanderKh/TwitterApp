@@ -1,27 +1,18 @@
-.card.card-block.user
-  .row
-    .profile.col-xs-12
-      .col-xs-12.col-sm-8.col-md-9.col-lg-10
-        a ui-sref="app.user({ id: user.id })"
-          h3 {{ user.username }}
-        .btn-group ng-if="user.id != currentUser().id"
-          .btn-group.btn-group-sm ng-controller="FollowsController"
-            button.btn.btn-default ng-if="!user.following" ng-click="follow(user)"
-              span Follow
-            button.btn.btn-success ng-if="user.following" ng-click="unfollow(user)"
-              span Follow
-          .btn-group.btn-group-sm ng-controller="FavouriteController"
-            button.btn.btn-default ng-if="!user.favourable_id" ng-click="favourite(user)"
-              span Favourite
-            button.btn.btn-success ng-if="user.favourable_id" ng-click="removeFavourite(user)"
-              span Favourite
-      .col-xs-12.col-sm-4.col-md-3.col-lg-2.text-center
-        img.img-fluid.img-thumbnail alt="" src="{{ user.avatar_medium_url }}"
-      .col-xs-12 ng-show="user.id == currentUser().id"
-        form name="avatarForm"
-          .form-group
-            label for="avatarFile" Upload Avatar
-            input#avatarFile.form-control-file accept="image/*" name="avatar" ng-model="avatar" ngf-max-size="2MB" ngf-model-invalid="errorFile" ngf-select="" required="" type="file"
-            small.form-text.text-danger ng-show="avatarForm.file.$error.maxSize"
-              | File too large {{errorFile.size / 1000000|number:1}}MB: max 2M
-          button.btn.btn-primary.btn-sm ng-click="updateAvatar()" ng-disabled="!avatarForm.$valid" Save avatar
+.row.profile
+  .col-xs-12
+    .col-xs-12.col-sm-8.col-md-9.col-lg-10
+      a ui-sref="app.user({ id: user.id })"
+        h3 {{ user.username }}
+      .btn-group ng-if="user.id != currentUser().id"
+        .btn-group.btn-group-sm ng-controller="FollowsController"
+          button.btn.btn-default ng-if="!user.following" ng-click="follow(user)"
+            span Follow
+          button.btn.btn-success ng-if="user.following" ng-click="unfollow(user)"
+            span Follow
+        .btn-group.btn-group-sm ng-controller="FavouriteController"
+          button.btn.btn-default ng-if="!user.favourable_id" ng-click="favourite(user)"
+            span Favourite
+          button.btn.btn-success ng-if="user.favourable_id" ng-click="removeFavourite(user)"
+            span Favourite
+    .col-xs-12.col-sm-4.col-md-3.col-lg-2.text-center
+      img.img-fluid.img-thumbnail alt="" src="{{ user.avatar_medium_url }}"

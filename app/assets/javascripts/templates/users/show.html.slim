@@ -1,4 +1,13 @@
-div ng-include="'users/user.html'"
+.row.card.card-block.user
+  .col-xs-12 ng-include="'users/user.html'"
+  .col-xs-12 ng-show="user.id == currentUser().id"
+    form name="avatarForm"
+      .form-group
+        label for="avatarFile" Upload Avatar
+        input#avatarFile.form-control-file accept="image/*" name="avatar" ng-model="avatar" ngf-max-size="2MB" ngf-model-invalid="errorFile" ngf-select="" required="" type="file"
+        small.form-text.text-danger ng-show="avatarForm.file.$error.maxSize"
+          | File too large {{errorFile.size / 1000000|number:1}}MB: max 2M
+      button.btn.btn-primary.btn-sm ng-click="updateAvatar()" ng-disabled="!avatarForm.$valid" Save avatar
 .list-group.user-tweets
   h4 ng-if="user.tweets.length" Tweets by {{ user.username }}
   div ng-repeat="tweet in user.tweets"
